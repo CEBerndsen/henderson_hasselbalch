@@ -1,0 +1,28 @@
+---
+title: "Henderson-Hasselbalch"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+
+library(tidyverse)
+
+
+```
+
+
+## Reversible Protonation
+
+Bonds to hydrogen can often break to form a proton and the resulting base. Not all bonds to hydrogen have the same strength although molecules that are prone to break are often called *acids*. In biochemistry, there are two main types: *strong* and *weak*. Strong acids are ones that are fully dissociated in water into the proton and the conjugate base of the acid. Weak acids are ones that are only partially dissociated within the range of pH values 1 to 14. These molecules are useful for serving as *buffers* or molecules that can maintain pH within a specified range. Each weak acid or buffer has a distinct pH range where it is most effective. This range called the *buffer range* is $\pm$1 pH unit of the *pK~A~* value. 
+
+The pK~A~ value is:
+
+$$ pK_A = -log(K_A) $$
+
+the acid dissociation constant or K~A~ is:
+
+$$ K_A = \frac{[H^+][A^-]}{[HA]} $$
+
+Thus, the pK~A~ value relates to the equilibrium constant showing the breakdown of acid into the proton and the conjugate base. As the concentration of conjugate base and proton increase, the K~A~ value gets larger and the pK~A~ value gets smaller. Practically this makes sense as acids that are more likely to release a proton are considered stronger and have lower pK~A~  values. Hydrochloric acid (HCl) has a pK~A~ of -7 while ammonium (NH~4~^+^) has a pK~A~ of 9 [ref](https://www2.onu.edu/~b-myers/organic/2511_Files/Chapter3-pKa%20table.pdf). 
+
