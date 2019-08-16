@@ -3,25 +3,25 @@ library(tidyverse)
 
 
 # Define UI for application that draws a histogram
-ui <- fluidPage(
+ui <- navbarPage(
+    "Understanding pH and pKa",
+    tabPanel("Simulator",
     # Application title
-    h2("Understanding pH and pKa"),
-    fluidRow(
-        column(3,
-               div(style = "height:10px"),
-        plotOutput("scatPlot"),
-        offset = 1
-    ),
-    column(2,
-        plotOutput("barPlot")),
-    column(4,
-        plotOutput("phPlot"),
-        offset = 1)
-        ),
-    hr(),
+    fluidPage(
+        fluidRow(
+                        column(5,
+                            plotOutput("scatPlot")
+                                ),
+                        column(3,
+                            plotOutput("barPlot")
+                                ),
+                        column(4,
+                            plotOutput("phPlot")
+                                )
+            ),
+        hr(),
     # Sidebar with a slider input for number of bins 
     fluidRow(
-        h4("Settings:"),
         column(4,
                offset = 1,
             sliderInput("ph",
@@ -37,13 +37,18 @@ ui <- fluidPage(
                         min = 0.5,
                         max = 14,
                         value = 7)
-        )
-    ),
-        hr(),
-        br(),
-        "Shiny app created by C.E. Berndsen, 2019",
-        br()
+)
+)
+),
+    hr(),
+    br(),
+    "Shiny app created by C.E. Berndsen, 2019",
+    br()
+),
+    tabPanel("More Information",
+        includeHTML("H-H_explain.html")
     )
+)
 
 # Define server logic required to draw a histogram
 server <- function(input, output) {
@@ -191,8 +196,8 @@ server <- function(input, output) {
             geom_vline(xintercept = 0.5, linetype = 2) +
             geom_point(data = where, aes(x = equiv, y = ph), alpha = 0.5, color = "red", size = 5) +
             theme_bw() +
-            theme(axis.title = element_text(size = 24, face = "bold"),
-                  axis.text = element_text(size = 20, face = "bold"),
+            theme(axis.title = element_text(size = 16, face = "bold"),
+                  axis.text = element_text(size = 12, face = "bold"),
                   legend.position = "none",
                   plot.title = element_text(size = 10, face = "bold")) +
             labs(x = "Molar equivalents \nof strong base", y = "pH", title = "pH titration curve") +
